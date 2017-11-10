@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import chennuo.x.xgitbook.Adapter.ForecastListAdapter
+import chennuo.x.xgitbook.BuildConfig
 import chennuo.x.xgitbook.Network.ForecastRequest
 import chennuo.x.xgitbook.R
 import chennuo.x.xgitbook.domain.Command
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 forecastList.adapter = ForecastListAdapter(this@MainActivity,result)
             }
         }
+        val url2 = BuildConfig.DEFAULT_HOSTS_URL
     }
 
     class click(){
