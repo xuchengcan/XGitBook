@@ -4,15 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import chennuo.x.xgitbook.Adapter.ForecastListAdapter
-import chennuo.x.xgitbook.Network.ForecastRequest
 import chennuo.x.xgitbook.R
-import chennuo.x.xgitbook.domain.Command
-import chennuo.x.xgitbook.domain.ForecastDataMapper
-import chennuo.x.xgitbook.domain.ForecastList
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.find
-import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,24 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         val url = "http://www.baidu.com"
         doAsync() {
-            val result = RequestForecastCommand("94043").execute()
-            uiThread{
-                forecastList.adapter = ForecastListAdapter(this@MainActivity,result)
-            }
+
         }
     }
 
-    class click(){
-        
-    }
-
-
-    class RequestForecastCommand(val zipCode: String) :
-            Command<ForecastList> {
-        override fun execute(): ForecastList {
-            val forecastRequest = ForecastRequest(zipCode)
-            return ForecastDataMapper().convertFromDataModel(
-                    forecastRequest.execute())
-        }
-    }
 }
